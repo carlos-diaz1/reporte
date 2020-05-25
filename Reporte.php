@@ -1,5 +1,4 @@
 <?php
-
 require('fpdf/fpdf.php');
 $fpdf = new FPDF();
 $fpdf -> Addpage('PORTRAIT','A4');
@@ -22,14 +21,11 @@ class pdf extends FPDF
         //$this -> Image('fpdf/img/bandera.png',185,275,20,20,'png',"");
         $this->Setx(-30);
         $this->AliasNbPages('tpaginas');
-        $this->Write(5,$this->PageNo().'/tpaginas');
-        
+        $this->Write(5,$this->PageNo().'/tpaginas'); 
     }
 }
 
 $fpdf = new pdf();
-
-
 $fpdf->AddPage();
 $fpdf->SetFont('Courier','B',16);
 $fpdf->SetY(25);
@@ -37,8 +33,7 @@ $fpdf->Cell(0,5,"REPORTE DE ESTUDIANTES",0,0,"C");
 
 //$fpdf->SetTextColor(45,47,250);
 $fpdf->SetFont('Courier','B',14);
-$fpdf->Ln();
-$fpdf->Ln();
+$fpdf->Ln();$fpdf->Ln();
 $fpdf->Cell(30,5,"Materia:");
 $fpdf->SetFont('Courier','',14);$fpdf->Cell(20,5,"Sociologia");$fpdf->SetFont('Courier','B',14);$fpdf->Ln();
 $fpdf->Cell(30,5,"Profesor:",0,0,"");
@@ -51,7 +46,6 @@ $fpdf->SetFillColor(255, 255, 255);
 
 //Asiganar color a el bolder
 $fpdf->SetDrawColor(255, 179, 0);
-
 
 //Asignar Color
 //$fpdf->SetTextColor(143, 139, 129);
@@ -72,8 +66,6 @@ $fpdf->SetLineWidth(0);
 $fpdf->SetFillColor(230, 230, 230);
 $fpdf->SetDrawColor(255, 255, 255);
 
-
-
 require 'cn.php';
 $consulta="SELECT * FROM estudiantes";
 $resultado=$mysqli->query($consulta);
@@ -85,7 +77,5 @@ while($row=$resultado->fetch_assoc()){
     $fpdf->cell(20,10,$row['sexo'],1,0,'C',TRUE);
     $fpdf->Ln();
 }
-
-
 
 $fpdf->Output("","Registros de Estudiantes.pdf");
