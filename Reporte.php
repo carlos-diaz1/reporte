@@ -73,73 +73,18 @@ $fpdf->SetFillColor(230, 230, 230);
 $fpdf->SetDrawColor(255, 255, 255);
 
 
-$fpdf->cell(35,10,'2018-4774 ',1,0,'C',True);
-$fpdf->cell(60,10,'Pedro ',1,0,'C',TRUE);
-$fpdf->cell(60,10,'Abreu ',1,0,'C',TRUE);
-$fpdf->cell(20,10,'M',1,0,'C',TRUE);
-$fpdf->Ln();
 
-$fpdf->cell(35,10,'2018-5744 ',1,0,'C',True);
-$fpdf->cell(60,10,'Juan ',1,0,'C',TRUE);
-$fpdf->cell(60,10,'Vasquez ',1,0,'C',TRUE);
-$fpdf->cell(20,10,'M',1,0,'C',TRUE);
-$fpdf->Ln();
+require 'cn.php';
+$consulta="SELECT * FROM estudiantes";
+$resultado=$mysqli->query($consulta);
 
-$fpdf->cell(35,10,'2018-1454 ',1,0,'C',True);
-$fpdf->cell(60,10,'Carlos ',1,0,'C',TRUE);
-$fpdf->cell(60,10,'Gomez ',1,0,'C',TRUE);
-$fpdf->cell(20,10,'M',1,0,'C',TRUE);
-$fpdf->Ln();
-
-$fpdf->cell(35,10,'2018-3744 ',1,0,'C',True);
-$fpdf->cell(60,10,'Juan Mateo ',1,0,'C',TRUE);
-$fpdf->cell(60,10,'Diaz',1,0,'C',TRUE);
-$fpdf->cell(20,10,'M',1,0,'C',TRUE);
-$fpdf->Ln();
-
-$fpdf->cell(35,10,'2018-1478 ',1,0,'C',True);
-$fpdf->cell(60,10,'Maria Camila ',1,0,'C',TRUE);
-$fpdf->cell(60,10,'Abrue Lopez',1,0,'C',TRUE);
-$fpdf->cell(20,10,'F',1,0,'C',TRUE);
-$fpdf->Ln();
-
-$fpdf->cell(35,10,'2018-8745 ',1,0,'C',True);
-$fpdf->cell(60,10,'Carlos ',1,0,'C',TRUE);
-$fpdf->cell(60,10,'Gomez ',1,0,'C',TRUE);
-$fpdf->cell(20,10,'M',1,0,'C',TRUE);
-$fpdf->Ln();
-
-$fpdf->cell(35,10,'2018-6954 ',1,0,'C',True);
-$fpdf->cell(60,10,'Frederick',1,0,'C',TRUE);
-$fpdf->cell(60,10,'Suarez ',1,0,'C',TRUE);
-$fpdf->cell(20,10,'M',1,0,'C',TRUE);
-$fpdf->Ln();
-
-$fpdf->cell(35,10,'2018-6187 ',1,0,'C',True);
-$fpdf->cell(60,10,'Socorro',1,0,'C',TRUE);
-$fpdf->cell(60,10,'Fernadez',1,0,'C',TRUE);
-$fpdf->cell(20,10,'F',1,0,'C',TRUE);
-$fpdf->Ln();
-
-$fpdf->cell(35,10,'2018-7915 ',1,0,'C',True);
-$fpdf->cell(60,10,'Darleny',1,0,'C',TRUE);
-$fpdf->cell(60,10,'Cuevas',1,0,'C',TRUE);
-$fpdf->cell(20,10,'F',1,0,'C',TRUE);
-$fpdf->Ln();
-
-$fpdf->cell(35,10,'2018-8847 ',1,0,'C',True);
-$fpdf->cell(60,10,'Juan Marcos ',1,0,'C',TRUE);
-$fpdf->cell(60,10,'Torrez ',1,0,'C',TRUE);
-$fpdf->cell(20,10,'M',1,0,'C',TRUE);
-$fpdf->Ln();
-
-$fpdf->cell(35,10,'2018-1245 ',1,0,'C',True);
-$fpdf->cell(60,10,'Juan Carlos ',1,0,'C',TRUE);
-$fpdf->cell(60,10,'Cohen',1,0,'C',TRUE);
-$fpdf->cell(20,10,'M',1,0,'C',TRUE);
-$fpdf->Ln();
-
-
+while($row=$resultado->fetch_assoc()){
+    $fpdf->cell(35,10,$row['matricula'],1,0,'C',True);
+    $fpdf->cell(60,10,$row['nombre'],1,0,'C',TRUE);
+    $fpdf->cell(60,10,$row['apellido'],1,0,'C',TRUE);
+    $fpdf->cell(20,10,$row['sexo'],1,0,'C',TRUE);
+    $fpdf->Ln();
+}
 
 
 
