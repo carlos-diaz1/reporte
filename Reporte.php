@@ -8,9 +8,36 @@ class pdf extends FPDF
     public function header()
     {
         $this->SetFont('TIMES','B','10');
-        $this -> setX(160);
+        //$this -> setX(160);
         //$this->Write(5,"Colegio Agustiniano");
-        $this -> Image('fpdf/img/logo.png',150,5,55.5,18,'png');
+        $this -> Image('fpdf/img/logo.png',120,15,55.5,18,'png');
+        $this->SetFont('Courier','B',16);
+        $this->SetY(15);
+        $this->Cell(0,5,"REPORTE DE ESTUDIANTES",0,0,"");
+        $this->SetFont('Courier','B',14);
+        $this->Ln();$this->Ln();
+        $this->Cell(30,5,"Materia:");
+        $this->SetFont('Courier','',14);$this->Cell(20,5,"Sociologia");$this->SetFont('Courier','B',14);$this->Ln();
+        $this->Cell(30,5,"Profesor:",0,0,"");
+        $this->SetFont('Courier','',14);$this->Cell(20,5,"Pedro Adames");$this->SetFont('Courier','B',14);$this->Ln();
+        $this->Cell(30,5,"Curso:",0,0,"");
+        $this->SetFont('Courier','',14);$this->Cell(20,5,"J-145");$this->SetFont('Courier','B',14);$this->Ln(10);
+        $this->SetFont('Arial','B',12);
+        
+        //Asiganar color a el bolder
+        $this->SetDrawColor(255, 179, 0);
+
+        $this->cell(35,7,'Matricula: ',0,0,'C');
+        $this->cell(60,7,'Nombre: ',0,0,'C');
+        $this->cell(60,7,'Apellido: ',0,0,'C');
+        $this->cell(20,7,'Sexo: ',0,0,'C'); 
+        
+        //Asignar borde  a la linea
+        $this->SetLineWidth(1);
+        
+        //Asiganar una linea
+        $this->Line(15,55,185,55);
+        $this->Ln(15);  
     }
 
     public function footer()
@@ -27,42 +54,15 @@ class pdf extends FPDF
 
 $fpdf = new pdf();
 $fpdf->AddPage();
-$fpdf->SetFont('Courier','B',16);
-$fpdf->SetY(25);
-$fpdf->Cell(0,5,"REPORTE DE ESTUDIANTES",0,0,"C");
-
 //$fpdf->SetTextColor(45,47,250);
-$fpdf->SetFont('Courier','B',14);
-$fpdf->Ln();$fpdf->Ln();
-$fpdf->Cell(30,5,"Materia:");
-$fpdf->SetFont('Courier','',14);$fpdf->Cell(20,5,"Sociologia");$fpdf->SetFont('Courier','B',14);$fpdf->Ln();
-$fpdf->Cell(30,5,"Profesor:",0,0,"");
-$fpdf->SetFont('Courier','',14);$fpdf->Cell(20,5,"Pedro Adames");$fpdf->SetFont('Courier','B',14);$fpdf->Ln();
-$fpdf->Cell(30,5,"Curso:",0,0,"");
-$fpdf->SetFont('Courier','',14);$fpdf->Cell(20,5,"J-145");$fpdf->SetFont('Courier','B',14);$fpdf->Ln(10);
-$fpdf->SetFont('Arial','B',12);
 //Asignaar color a la celda
 $fpdf->SetFillColor(255, 255, 255);
 
 //Asiganar color a el bolder
 $fpdf->SetDrawColor(255, 179, 0);
 
-//Asignar Color
-//$fpdf->SetTextColor(143, 139, 129);
-
-$fpdf->cell(35,7,'Matricula: ',0,0,'C',True);
-$fpdf->cell(60,7,'Nombre: ',0,0,'C',TRUE);
-$fpdf->cell(60,7,'Apellido: ',0,0,'C',TRUE);
-$fpdf->cell(20,7,'Sexo: ',0,0,'C',TRUE);
-
-//Asignar borde  a la linea
-$fpdf->SetLineWidth(1);
-
-//Asiganar una linea
-$fpdf->Line(15,65,190,65);
-$fpdf->Ln(15);
 $fpdf->SetFont('Arial','',12);
-$fpdf->SetLineWidth(0);
+$fpdf->SetLineWidth(1);
 $fpdf->SetFillColor(230, 230, 230);
 $fpdf->SetDrawColor(255, 255, 255);
 
