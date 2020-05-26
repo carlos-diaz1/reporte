@@ -25,7 +25,7 @@ class pdf extends FPDF
         $this->SetFont('Arial','B',12);
         
         //Asiganar color a el bolder
-        $this->SetDrawColor(255, 179, 0);
+        $this->SetDrawColor(13, 87, 224);
 
         $this->cell(35,7,'Matricula: ',0,0,'C');
         $this->cell(60,7,'Nombre: ',0,0,'C');
@@ -33,7 +33,7 @@ class pdf extends FPDF
         $this->cell(20,7,'Sexo: ',0,0,'C'); 
         
         //Asignar borde  a la linea
-        $this->SetLineWidth(1);
+        $this->SetLineWidth(2);
         
         //Asiganar una linea
         $this->Line(15,55,185,55);
@@ -62,9 +62,9 @@ $fpdf->SetFillColor(255, 255, 255);
 $fpdf->SetDrawColor(255, 179, 0);
 
 $fpdf->SetFont('Arial','',12);
-$fpdf->SetLineWidth(1);
-$fpdf->SetFillColor(230, 230, 230);
-$fpdf->SetDrawColor(255, 255, 255);
+$fpdf->SetLineWidth(0.10);
+$fpdf->SetFillColor(235, 242, 255);
+$fpdf->SetDrawColor(0,0,0);
 
 require 'cn.php';
 $consulta="SELECT * FROM estudiantes";
